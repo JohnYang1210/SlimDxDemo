@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlimDX;
 using SlimDX.Windows;
+using SlimDX.DirectInput;
 namespace SlimDXDemo
 {
     public class GameWindow:IDisposable
@@ -21,6 +22,7 @@ namespace SlimDXDemo
         private long m_LastFrameTime;
         private int m_FrameCount;
         private int m_FPS;
+        private UserInput m_UserInput;
 
         public bool IsDisposed
         {
@@ -58,6 +60,7 @@ namespace SlimDXDemo
             m_Form = new RenderForm(title);
             m_Form.ClientSize = new System.Drawing.Size(width, height);
             m_Form.FormClosed += FormClosed;
+            m_UserInput = new UserInput();
         }
 
         private void FormClosed(object sender, FormClosedEventArgs e)
